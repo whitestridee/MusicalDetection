@@ -29,8 +29,6 @@
 4. затем по окнам берутся средние и стандартные отклонения, формируя единый embedding трека;
 5. поиск выполняется через косинусную близость между embedding запроса и embedding базы.
 
-Это не state-of-the-art, но для лабораторной работы это хороший и понятный baseline без сложных зависимостей.
-
 ## Быстрый старт
 
 ### 1. Подготовить базу треков
@@ -61,17 +59,6 @@
 http://127.0.0.1:8000/search?query=C:/full/path/to/example.wav&top_k=5
 ```
 
-## Демо без реальных треков
-
-```powershell
-& "C:\Users\boris\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe" .\generate_demo_dataset.py
-& "C:\Users\boris\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe" .\build_index.py --dataset .\demo_dataset --output .\index_data
-& "C:\Users\boris\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe" .\search_cli.py --query .\demo_dataset\tone_220.wav --index .\index_data --top-k 3
 ```
 
-## Ограничения
-
-- текущая версия поддерживает только PCM `.wav`;
-- `.mp3` можно добавить позже через `librosa` или `ffmpeg`;
-- индекс сейчас точный и полный, без FAISS/HNSW, что нормально для небольшой учебной базы.
 

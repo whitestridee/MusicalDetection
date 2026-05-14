@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.pyc
+
+# Data and generated indices
+dataset/
+demo_dataset/
+downloads/
+gtzan_full/
+index_data/
+temp_uploads/
+
+# Temporary render / office artifacts
+lo_profile/
+report_pdf/
+report_render/
+report_figures/
+~$*.docx
+
+# Old local report variants and copies
+sample_report_copy.docx
+report_audio_similarity.docx
+Отчет_поиск_похожих_музыкальных_композиций.docx
+Отчет_поиск_похожих_музыкальных_композиций_v2.docx
+
+# Assignment source
+Поиск похожих музыкальных композиций.docx

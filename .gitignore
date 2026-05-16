@@ -1,6 +1,7 @@
 # Python
 __pycache__/
 *.pyc
+.venv/
 
 # Data and generated indices
 dataset/
@@ -8,6 +9,7 @@ demo_dataset/
 downloads/
 gtzan_full/
 index_data/
+index_data_hnsw/
 temp_uploads/
 
 # Temporary render / office artifacts

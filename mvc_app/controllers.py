@@ -36,17 +36,18 @@ class SearchController:
         params = parse_qs(parsed.query)
         query_path = params.get("query", [None])[0]
         top_k = int(params.get("top_k", ["5"])[0])
+        engine = params.get("engine", ["auto"])[0]
         if not query_path:
             self._send_json(handler, {"error": "Parameter 'query' is required"}, status=HTTPStatus.BAD_REQUEST)
             return
 
         try:
-            results = self.model.find_similar(query_path, top_k=top_k)
+            results = self.model.find_similar(query_path, top_k=top_k, engine=engine)
         except Exception as exc:
             self._send_json(handler, {"error": str(exc)}, status=HTTPStatus.BAD_REQUEST)
             return
 
-        self._send_json(handler, {"query": str(Path(query_path).resolve()), "results": results})
+        self._send_json(handler, {"query": str(Path(query_path).resolve()), "engine": engine, "results": results})
 
     def handle_post(self, handler) -> None:
         if handler.path != "/search-upload":
@@ -62,7 +63,7 @@ class SearchController:
                 temp_file.write(file_bytes)
                 temp_path = Path(temp_file.name)
 
-            results = self.model.find_similar(temp_path, top_k=top_k)
+            results = self.model.find_similar(temp_path, top_k=top_k, engine="auto")
             self._send_html(handler, render_home_page(results=results, query_name=filename))
         except Exception as exc:
             self._send_html(handler, render_home_page(error=str(exc)), status=HTTPStatus.BAD_REQUEST)

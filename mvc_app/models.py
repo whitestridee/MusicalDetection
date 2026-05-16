@@ -11,5 +11,10 @@ class SearchModel:
     def __init__(self, index_dir: str | Path) -> None:
         self.index_dir = Path(index_dir)
 
-    def find_similar(self, query_path: str | Path, top_k: int = 5) -> list[dict[str, str | float | int]]:
-        return search_similar(query_path, self.index_dir, top_k=top_k)
+    def find_similar(
+        self,
+        query_path: str | Path,
+        top_k: int = 5,
+        engine: str = "auto",
+    ) -> list[dict[str, str | float | int]]:
+        return search_similar(query_path, self.index_dir, top_k=top_k, engine=engine)

@@ -107,12 +107,6 @@ http://127.0.0.1:8000/search?query=C:/full/path/to/example.wav&top_k=5&engine=au
 & ".\.venv\Scripts\python.exe" .\search_cli.py --query .\demo_dataset\tone_220.wav --index .\index_data --top-k 3 --engine auto
 ```
 
-## Ограничения
-
-- текущая версия поддерживает только PCM `.wav`;
-- `.mp3` можно добавить позже через `librosa` или `ffmpeg`;
-- для `faiss` нужен пакет `faiss-cpu`, для `hnsw` нужен пакет `hnswlib`;
-- если эти пакеты не установлены, проект продолжит работать через baseline backend `numpy`.
 
 ## Как улучшить проект
 
